@@ -3,29 +3,31 @@
 #include <cstring>
 
 Student::Student(const char * const name, int perm) {
-  this->setName("another stub");
+  this->setName(name);
+  this->setPerm(perm);
 }
 
 int Student::getPerm() const {
-  return -42;
+  return this->perm;
 }
 
 const char * const Student::getName() const {
-  return "stub";
+  return this->name;
 }
 
 void Student::setPerm(const int permNumber) {
+  this->perm = permNumber;
 }
 
 void Student::setName(const char * const name) {
-  this->name = new char[strlen("stub")+1];
-  strcpy(this->name,"stub");
+  this->name = new char[strlen(name)+1];
+  strcpy(this->name,name);
 }
 
 
 Student::Student(const Student &orig) {
-  this->setName("yet another stub");
-  this->setPerm(-42);
+  this->setName(orig.name);
+  this->setPerm(orig.perm);
 }
 
 Student::~Student() {
