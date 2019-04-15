@@ -1,8 +1,10 @@
 #include "student.h"
 #include <string>
 #include <cstring>
+#include <sstream>
 
 Student::Student(const char * const name, int perm) {
+  this->name = NULL;
   this->setName(name);
   this->setPerm(perm);
 }
@@ -20,18 +22,23 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const name) {
+  this->name = NULL;
+  if (name != NULL) delete[] this->name;
+  if(name){
   this->name = new char[strlen(name)+1];
   strcpy(this->name,name);
+  }
 }
-
+//strlen(name)+1
 
 Student::Student(const Student &orig) {
+  this->name = NULL;
   this->setName(orig.name);
   this->setPerm(orig.perm);
 }
 
-Student::~Student() {
-
+Student::~Student(){
+  delete[] this->name;
 }
 
 Student & Student::operator=(const Student &right) {
@@ -43,8 +50,11 @@ Student & Student::operator=(const Student &right) {
     return (*this);
 
   // TODO... Here is where there is code missing that you need to 
-  // fill in...
-
+  // fill in..
+  if(right.getName() != NULL){ 
+  this->perm = right.perm;
+  this->setName(right.getName());
+  }
 
   // KEEP THE CODE BELOW THIS LINE
   // Overloaded = should end with this line, despite what the textbook says.
@@ -53,6 +63,13 @@ Student & Student::operator=(const Student &right) {
 }
 
 std::string Student::toString() const {
-  return "tostring stub";
+
+  std::ostringstream oss;
+  
+  oss << "[" 
+      << this->getName() << ","
+      << this->getPerm() << "]";
+  return oss.str();
+
 }
 

@@ -1,21 +1,35 @@
 #include <string>
 #include "studentRoll.h"
+#include "student.h"
+#include <sstream>
 
 StudentRoll::StudentRoll() {
   head = tail = NULL;
 }
 
 void StudentRoll::insertAtTail(const Student &s) {
-  // STUB
+  this->tail->next = new Node;
+  this->tail = tail->next;
+  this->tail->next = NULL;
 }
 
 std::string StudentRoll::toString() const {
-  return "stub";
+	/*
+    std::ostringstream oss;
+  oss << "["
+      << this->getName() << ","
+      << this->getPerm() << "]";
+  return oss.str(); */
+	return "stub";
 }
 
 StudentRoll::StudentRoll(const StudentRoll &orig) {
-  // STUB
-  head = tail = NULL;
+  if (orig.head == NULL) {
+	  this->head = NULL;
+	  this->tail = NULL;
+	  return;
+  }
+ return; 
 }
 
 StudentRoll::~StudentRoll() {
