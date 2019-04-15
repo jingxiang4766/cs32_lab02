@@ -10,11 +10,11 @@ Student::Student(const char * const name, int perm) {
 }
 
 int Student::getPerm() const {
-  return this->perm;
+  return perm;
 }
 
 const char * const Student::getName() const {
-  return this->name;
+  return name;
 }
 
 void Student::setPerm(const int permNumber) {
@@ -22,23 +22,21 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const name) {
-  this->name = NULL;
   if (name != NULL) delete[] this->name;
   if(name){
   this->name = new char[strlen(name)+1];
   strcpy(this->name,name);
   }
 }
-//strlen(name)+1
 
 Student::Student(const Student &orig) {
   this->name = NULL;
-  this->setName(orig.name);
-  this->setPerm(orig.perm);
+  this->setName(orig.getName());
+  this->setPerm(orig.getPerm());
 }
 
 Student::~Student(){
-  delete[] this->name;
+  delete[] name;
 }
 
 Student & Student::operator=(const Student &right) {
@@ -52,7 +50,7 @@ Student & Student::operator=(const Student &right) {
   // TODO... Here is where there is code missing that you need to 
   // fill in..
   if(right.getName() != NULL){ 
-  this->perm = right.perm;
+  this->setPerm(right.getPerm());
   this->setName(right.getName());
   }
 
