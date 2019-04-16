@@ -65,7 +65,7 @@ StudentRoll::~StudentRoll() {
   Node* n = this->head;
   while(n != NULL){
           p = p->next;
-        //  delete[] n->s;
+          delete n->s;
           delete n;
           n = p;
   }
@@ -86,6 +86,7 @@ StudentRoll & StudentRoll::operator =(const StudentRoll &right ) {
   Node* n = this->head;
   while(n != NULL){
 	p = p->next;
+	delete n->s;
 	delete n;
 	n = p;
   }
