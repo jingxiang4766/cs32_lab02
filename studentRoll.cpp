@@ -80,12 +80,39 @@ StudentRoll & StudentRoll::operator =(const StudentRoll &right ) {
     return (*this);
 
   // TODO... Here is where there is code missing that you need to 
-  // fill in...
+  // fill in..
 
-
+  Node* p = this->head;
+  Node* n = this->head;
+  while(n != NULL){
+	p = p->next;
+	delete n;
+	n = p;
+  }
+    
+  if (right.head == NULL) {
+          this->head = NULL;
+          this->tail = NULL;
+          return *this;
+  }
+  Node* ori = right.head;
+  this->head = new Node;
+  this->tail = this->head;
+  this->head->s = new Student(ori->s->getName(), ori->s->getPerm());
+  this->head->next = NULL;
+  ori = ori->next;
+  n = this->head;
+  while(ori != NULL){
+          n->next = new Node;
+          n->next->next = NULL;
+          n->next->s = new Student(ori->s->getName(), ori->s->getPerm());
+          this->tail = this->tail->next;
+	  ori = ori->next;
+	  n = n->next;
+  }
   // KEEP THE CODE BELOW THIS LINE
   // Overloaded = should end with this line, despite what the textbook says.
-  return (*this); 
+  return *this;
   
 }
 
