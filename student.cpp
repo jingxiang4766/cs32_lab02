@@ -22,11 +22,9 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const name) {
-  if (name != NULL) delete[] this->name;
-  if(name){
+  if (this->getName() != 0) {delete[] this->name;}
   this->name = new char[strlen(name)+1];
   strcpy(this->name,name);
-  }
 }
 
 Student::Student(const Student &orig) {

@@ -46,7 +46,7 @@ testStudent00: testStudent00.o student.o tddFuncs.o
 	${CXX} $^ -o $@
 
 testStudent01: testStudent01.o student.o tddFuncs.o
-	${CXX} $^ -o $@
+	${CXX} -g $^ -o $@
 
 testStudent02: testStudent02.o student.o tddFuncs.o
 	${CXX} $^ -o $@
